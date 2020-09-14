@@ -1,0 +1,117 @@
+    <div class="row">
+        <div class="col-md-5">
+            <mat-list>
+                <mat-list-item class="card-header">
+                    <h3 mat-subheader>Responsable  : &nbsp; {{nom}}&nbsp;&nbsp;
+
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <mat-icon>account_circle</mat-icon>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" *ngIf="pasEncore==true" (click)="notifier()">
+                                    <span class="material-icons" style=" color:rgb(255, 251, 6);
+  
+                                    font-size: 20px;">
+                                        notifications_active
+                
+                                    </span>
+                                    &nbsp;
+                                    rappel Prof
+                                </a>
+                                <a class="dropdown-item" *ngIf="pasEncore==false" (click)="export()"> 
+                                    <span class="material-icons"style=" color:red;
+                                      font-size: 20px;">
+                                        picture_as_pdf
+                
+                                    </span>
+                                    Exporter to pdf
+                                </a>
+                                <a class="dropdown-item" (click)="logout()">deconnexion</a>
+                            </div>
+                        </div>
+                    </h3>
+                </mat-list-item>
+
+                <mat-list-item class="list" *ngFor="let m of tabMatierres;let i=index"  
+                (click)="onSelect(i)" 
+                [ngStyle]="{background: i==selectedUser?  'grey':'#f1f1f1'}"
+                >
+                  
+               
+                   
+                    <div >
+                        <h6 mat-line (click)="affMatierre(m)">
+                            <span> department: {{m.class.depart}}</span>&nbsp;&nbsp;
+                            <span>classe:{{m.class.niveau}}</span>
+                            <span>{{m.class.nom}}</span>
+                           
+                            <span>matierre:{{m.nom}}</span>
+                            <span>semestre :{{m.semestre}}</span>
+
+                        </h6>
+
+                    </div>
+                    <mat-divider></mat-divider>
+
+                </mat-list-item>
+
+
+            </mat-list>
+
+
+
+
+        </div>
+
+
+
+
+        <div class="col-md-7">
+            <div class="card" id="myCard">
+                <div class="card-header">
+                    <h4 style="text-align: center;">Institut superieur d'etude technologique mahdia</h4>
+                    <h5>
+                        <span style="float: left;">Anne universitaire : 2019/2020</span>
+                        <h5 *ngIf="matiere">department: {{matiere.class.depart}}</h5>
+                        <span *ngIf="matiere">class: {{matiere.class.niveau}} &nbsp;{{matiere.class.nom}}</span>
+                    </h5>
+                   
+                    &nbsp;<span *ngIf="matiere">semestre: {{matiere.semestre}}</span>
+                    &nbsp;<span style="float: right;" *ngIf="matiere">matiere: {{matiere.nom}}</span>
+
+
+
+                </div>
+                <div class="card-body" *ngIf="pasEncore==false">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">numInscrit</th>
+                                <th scope="col">Nom</th>
+
+                                <th scope="col">Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let n of Notes">
+                                <td scope="row">
+                                    {{n.etudiant.numInscrit}}
+                                </td>
+                                <td>{{n.etudiant.nom}} &nbsp; {{n.etudiant.prenom}}</td>
+                                <td>{{n.note}}</td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="alert alert-warning" *ngIf="pasEncore==true">les note du cette matierre pas ecores Ajoutées</div>
+            </div>
+        </div>
+
+
+
+    </div>

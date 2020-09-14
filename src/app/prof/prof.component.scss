@@ -1,0 +1,42 @@
+.card-header,h3
+    {
+        background: #0073ff;
+        color: white!important;
+        font-size: larger!important;
+    }
+    .list{
+        background: #f1f1f1;
+        margin: 0 0 18px 0px;
+    }
+    .mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+        display: block;
+        height: 68px!important;
+        -webkit-tap-highlight-color: transparent;
+        width: 100%;
+        padding: 0;
+    }
+
+    .row {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: 15px!important;
+        margin-left: -4px!important;
+    }
+    h6 {
+        cursor: pointer;
+       font-size: 11px;
+       font-family: serif;
+       font-weight: bold;
+   }
+
+   .dropdown-toggle::after {
+    display: none;
+   
+}
+a,.dropdown-toggle {
+    cursor: pointer;
+   
+}
